@@ -21,9 +21,9 @@ class DbHelper(object):
         try:
             self.cursor.execute(events_sql)
             self.db.commit()
-        except sqlite3.OperationalError, e:
+        except sqlite3.OperationalError:
             print ('Can\'t create table events')
-            print (e)
+            #print (e)
             self.db.rollback()
 
     def connect_db(self):
@@ -55,9 +55,9 @@ class DbHelper(object):
                                 description, url, format, duration))
 
             self.db.commit()
-        except sqlite3.IntegrityError, e:
+        except sqlite3.IntegrityError:
             print ('CTF event {} already registred').format(title)
-            print (e)
+            # print (e)
         except Exception as e:
             self.db.rollback()
             raise e

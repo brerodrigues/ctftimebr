@@ -101,28 +101,28 @@
                 </caption>
                 <thead>
                     <tr>
-                        <th scope="col" data-label="CTF">CTF</th>
-                        <th scope="col" data-label="Cadastro">Cadastro</th>
-                        <th scope="col" data-label="Inicio">Inicio</th>
-                        <th scope="col" data-label="Fim">Fim</th>
-                        <th scope="col" data-label="Duração">Duração</th>
-                        <th scope="col" data-label="Tipo">Tipo</th>
+                        <th scope="col">CTF</th>
+                        <th scope="col">Cadastro</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for ctf in ctf_list %}
                     <tr>
-                        <td scope="row">
+                        <td scope="row" data-label="CTF">
                             <a href="{{ ctf[2] }}">{{ ctf[1] }}</a>
                         </td>
-                        <td scope="row">
+                        <td scope="row" data-label="Cadastro">
                             <a href="{{ ctf[7] }}">{{ ctf[7] }}</a>
                         </td>
-                        <td scope="row"> {{ ctf[4] }} </td>
-                        <td scope="row"> {{ ctf[5] }} </td>
+                        <td scope="row" data-label="Inicio"> {{ ctf[4] }} </td>
+                        <td scope="row" data-label="Fim"> {{ ctf[5] }} </td>
                         <!-- <td>  ctf[6]  </td> -->
-                        <td scope="row"> {{ ctf[9] }} </td>
-                        <td scope="row"> {{ ctf[8] }} </td>
+                        <td scope="row" data-label="Duração"> {{ ctf[9] }} </td>
+                        <td scope="row" data-label="Tipo"> {{ ctf[8] }} </td>
                     </tr>
                     {% endfor %}
                 </tbody>

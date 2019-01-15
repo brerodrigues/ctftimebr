@@ -1,9 +1,90 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+            background-color: #fafafa;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .25em 0 .75em;
+        }
+
+        table tr {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        table td img {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>CTF Time</title>
@@ -11,32 +92,39 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <tr>
-                    <th class="thead-dark" scope="col">CTF</th>
-                    <th class="thead-dark" scope="col">Cadastro</th>
-                    <th class="thead-dark" scope="col">Inicio</th>
-                    <th class="thead-dark" scope="col">Fim</th>
-                    <th class="thead-dark" scope="col">Duração</th>
-                    <th class="thead-dark" scope="col">Tipo</th>
-                </tr>
-                {% for ctf in ctf_list %}
-                <tr>
-                    <td>
-                        <a href="{{ ctf[2] }}">{{ ctf[1] }}</a>
-                    </td>
-                    <td>
-                        <a href="{{ ctf[7] }}">{{ ctf[7] }}</a>
-                    </td>
-                    <td> {{ ctf[4] }} </td>
-                    <td> {{ ctf[5] }} </td>
-                    <!-- <td>  ctf[6]  </td> -->
-                    <td> {{ ctf[9] }} </td>
-                    <td> {{ ctf[8] }} </td>
-                </tr>
-                {% endfor %}
+    <caption>
+        Lista de CTFS - Horário de Recife / PE
+    </caption>
+    <div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">CTF</th>
+                        <th scope="col">Cadastro</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ctf in ctf_list %}
+                    <tr>
+                        <td>
+                            <a href="{{ ctf[2] }}">{{ ctf[1] }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ ctf[7] }}">{{ ctf[7] }}</a>
+                        </td>
+                        <td> {{ ctf[4] }} </td>
+                        <td> {{ ctf[5] }} </td>
+                        <!-- <td>  ctf[6]  </td> -->
+                        <td> {{ ctf[9] }} </td>
+                        <td> {{ ctf[8] }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
                 <!-- </table>
       <table border = 1>
          {% for ctf in ctf_list %}

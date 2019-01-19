@@ -26,6 +26,27 @@ class DbHelper(object):
             #print (e)
             self.db.rollback()
 
+    def create_table_teams(self):
+        teams_sql = '''CREATE TABLE teams(id INTEGER PRIMARY KEY, 
+                name TEXT, position INTEGER, points REAL)'''
+        try:
+            self.cursor.execute(teams_sql)
+            self.db.commit()
+        except sqlite3.OperationalError:
+            print ('Can\'t create table teams')
+            #print (e)
+            self.db.rollback()
+
+    def drop_table_teams(self):
+        teams_sql = '''DROP TABLE teams'''
+        try:
+            self.cursor.execute(teams_sql)
+            self.db.commit()
+        except sqlite3.OperationalError:
+            print ('Can\'t drop table teams')
+            #print (e)
+            self.db.rollback()
+
     def connect_db(self):
         self.db = sqlite3.connect(self.database)
         self.cursor = self.db.cursor()
@@ -76,3 +97,24 @@ class DbHelper(object):
 
     def update_ctf_event(self, event):
         print ('update ctf event')
+
+    def insert_ctf_team_ranking(self, team):
+        name = team.name
+        position = team.position
+        points = team.points
+
+        try:
+            self.cursor.execute('''INSERT INTO teams(name, position, points)
+                                VALUES(?, ?, ?)''', (name, position, points))
+
+            self.db.commit()
+        except sqlite3.IntegrityError:
+            print ('Team {} already registred').format(name)
+            # print (e)
+        except Exception as e:
+            self.db.rollback()
+            raise e
+
+    def list_ctf_teams_by_position(self):
+        self.cursor.execute(''' SELECT * FROM teams ORDER BY (position) ASC''')
+        return self.cursor.fetchall()

@@ -70,6 +70,8 @@ class CtftimeApi(object):
 
             # total_teams = int(html_table_teams.count('tr') - 1)
             last_stored_team_ofsset = None
+            team_list = []
+            team_position = 0
             while limit >= 0:
                 if last_stored_team_ofsset is not None:
                     team_name_first_ofsset = html_table_teams.find('">', last_stored_team_ofsset) + 2
@@ -83,6 +85,10 @@ class CtftimeApi(object):
                     team_points = html_table_teams[team_points_start_ofsset:team_points_last_ofsset]
 
                     last_stored_team_ofsset = team_name_last_ofsset
+
+                    team_position = team_position + 1
+                    team = Team(team_name, team_position, team_points)
+                    team_list.append(team)
                 else:
                     team_name_first_ofsset = html_table_teams.find('">') + 2
                     team_name_last_ofsset = html_table_teams.find('</a>', team_name_first_ofsset)
@@ -96,5 +102,10 @@ class CtftimeApi(object):
                     team_points = html_table_teams[team_points_start_ofsset:team_points_last_ofsset]
 
                     last_stored_team_ofsset = team_name_last_ofsset
-                    
+
+                    team_position = team_position + 1
+                    team = Team(team_name, team_position, team_points)
+                    team_list.append(team)
+
                 limit = limit - 1
+            return team_list

@@ -176,16 +176,15 @@
                 </caption>
                 <thead>
                     <tr>
-                        <th scope="col">Posição</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Pontos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for ctf in ctf_list %}
+                    {% for team in team_list %}
                     <tr>
-                        <td scope="row" data-label="Time">
-                            <a href="{{ ctf[2] }}">Pontos</a>
+                        <td scope="row" data-label="{{ team[2] }}º - {{ team[1] }}">
+                            {{ team[3] }}
                         </td>
                     </tr>
                     {% endfor %}

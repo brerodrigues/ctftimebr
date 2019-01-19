@@ -7,7 +7,8 @@ app = Flask(__name__)
 def index():
     db = DbHelper('ctftimebr/sqlite.db')
     db.connect_db()
-    return render_template('index.html', ctf_list = db.list_ctf_events_by_limit(3))
+    return render_template('index.html', ctf_list = db.list_ctf_events_by_limit(3), 
+                            team_list = db.list_ctf_teams_by_position())
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)

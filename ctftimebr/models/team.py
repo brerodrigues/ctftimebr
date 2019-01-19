@@ -2,13 +2,7 @@
 
 class Team(object):
 	
-	def __init__(self, json):
-		pass
-		# do the magic with json
-		#this.start = start
-		#this.finish = finish
-		#this.description = description
-		#this.url = url
-		#this.format = format
-		#this.duration = duration
-		#this.ctftime_url = ctftime_url
+	def __init__(self, name, position, points):
+		self.name = name
+		self.position = position
+		self.points = points

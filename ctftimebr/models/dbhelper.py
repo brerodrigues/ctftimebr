@@ -66,5 +66,13 @@ class DbHelper(object):
         self.cursor.execute(''' SELECT * FROM events ORDER BY date(start) ASC''')
         return self.cursor.fetchall()
 
+    def list_ctf_events_by_limit(self, limit):
+        sql = ''' SELECT * FROM events where finish > date('now') 
+                ORDER BY date(start) ASC LIMIT {}'''.format(limit)
+        print (sql)
+        self.cursor.execute(sql)
+
+        return self.cursor.fetchall()
+
     def update_ctf_event(self, event):
         print ('update ctf event')

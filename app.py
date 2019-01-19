@@ -10,4 +10,4 @@ def index():
     return render_template('index.html', ctf_list = db.list_ctf_events_by_limit(3))
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()

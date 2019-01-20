@@ -7,7 +7,7 @@ from models.event import Event
 
 class CtftimeApi(object):
     
-    teams_br_endpoint = 'stats/2018/BR'
+    teams_br_endpoint = 'stats/2019/BR'
     events_endpoint = 'events/?'
     event_endpoint = 'events/'
     teams_endpoint = 'teams/'

@@ -1,9 +1,9 @@
-Flask==0.12.2
+flask>=0.12.3
 Flask-SQLAlchemy==2.3.2
 Jinja2>=2.10.1
 jsonschema==2.5.1
 python-dateutil==2.6.1
-requests==2.18.4
+requests>=2.20.0
 requests-file==1.4.2
 Routes==2.2
 simplejson==3.8.1

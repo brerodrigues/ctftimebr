@@ -44,7 +44,6 @@ def update_ranking_teams():
 
 def main():
     update_ctf_events()
-    update_ranking_teams()
 
 
 
